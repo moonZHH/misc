@@ -1,0 +1,20 @@
+1. sudo apt-get purge nvidia*
+
+2.0 禁用自带的nouveau nvidia驱动 （important！）
+    sudo vim /etc/modprobe.d/blacklist-nouveau.conf
+    写入 blacklist nouveau
+    写入 options nouveau modeset=0
+2.1 sudo update-initramfs -u
+
+3.0 reboot
+3.1 检查nouveau是否被干掉 lsmod | grep nouveau
+
+4. sudo service lightdm stop
+
+5. sudo apt-get update nvidia-version
+
+6. sudo service lightdm start
+
+7. 后期检查(可选)
+   nvidia-smi
+   nvidia-settings
