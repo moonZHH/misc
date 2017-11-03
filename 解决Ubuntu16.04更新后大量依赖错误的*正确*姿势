@@ -1,5 +1,5 @@
 *** Part I: obtaining dependency-error libraries/applications ***
-sudo apt-get --reinstall install dkpg > error.txt （ Why? I cannot explain as well. TvT ）
+sudo apt-get --reinstall install dkpg > error.txt （ What?! TvT ）
 
 *** Part II: reinstalling dependencies ***
 
