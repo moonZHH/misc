@@ -1,0 +1,44 @@
+*** Part I: obtaining dependency-error libraries/applications ***
+sudo apt-get --reinstall install dkpg > error.txt
+
+*** Part II: reinstalling dependencies ***
+
+import re
+import os
+
+def main():
+
+    txt = ""
+    with open("out") as f:
+        txt = f.read()
+
+    p = re.compile(r"'.*'")
+    out = p.findall(txt)
+
+    str1 = ""
+    for i in out:
+        ## str1 += "sudo apt-get install --reinstall -y " + i[1:-1] + "\n"
+        str1 += "sudo apt-get remove " + i[1:-1] + "\n"
+
+    with open("clean.sh",'w') as f:
+        f.write(str1)
+
+    os.system('chmod +X clean.sh')
+    os.system('sh ./clean.sh')
+    os.remove('out')
+
+if __name__ == "__main__":
+    main()
+
+*** Part III: dealing with exceptions occur in Part II ***
+    
+sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old
+sudo mkdir /var/lib/dpkg/info
+sudo apt-get update
+sudo apt-get -f install
+sudo apt-get autoremove
+sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old
+sudo rm -rf /var/lib/dpkg/info
+sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info
+
+That's it. :)
