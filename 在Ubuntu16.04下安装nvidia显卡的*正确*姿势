@@ -1,4 +1,4 @@
-1. sudo apt-get purge nvidia*
+1. sudo apt-get purge nvidia* && sudo apt-get autoremove
 
 2.0 禁用自带的nouveau nvidia驱动 （important！）
     sudo vim /etc/modprobe.d/blacklist-nouveau.conf
