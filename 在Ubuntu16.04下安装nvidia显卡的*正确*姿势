@@ -11,7 +11,7 @@
 
 4. sudo service lightdm stop
 
-5. sudo apt-get update nvidia-version
+5. sudo apt-get update nvidia-375 (980一定要用375, 高版本会崩的)
 
 6. sudo service lightdm start
 
