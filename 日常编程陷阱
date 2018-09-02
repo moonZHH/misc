@@ -1,0 +1,1 @@
+1. Java jni 或者 Android native 函数, 务必注意通过调用 "env->Release***"系列 以及 "env->Delete***" 系列 函数 来释放内存, 否则 在多次调用同一函数的场景下, 内存泄露造成DoS没商量.
