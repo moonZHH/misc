@@ -11,7 +11,7 @@
 
 4. sudo service lightdm stop
 
-5. sudo apt-get upgrade nvidia-??? (具体支持的nvidia驱动版本号请通过nvidia官网查询)
+5. sudo ubuntu-drivers autoinstall
 
 6. sudo service lightdm start
 
