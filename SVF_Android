@@ -1,0 +1,12 @@
+makevars.go       | clang -> wllvm, clang++ -> wllvm++
+binary.mk         | include $(BUILD_SYSTEM)/config_sanitizers.mk -> # include $(BUILD_SYSTEM)/config_sanitizers.mk
+builder.go        | clang -> wllvm, clang++ -> wllvm++, func TransformStrip -> modify
+compdb.go         | clang -> wllvm, clang++ -> wllvm++
+config.go         | "file": Allowed -> add, "objcopy": Allowed -> add
+bpf.go            | clang -> wllvm
+arm_device.go     | "-Wl,--icf=safe" -> // "-Wl,--icf=safe"
+arm64_device.go   | "-Wl,--icf=safe" -> // "-Wl,--icf=safe"
+sanitize.go       | flags(*) { return flags; * } -> modify
+lto.go            | flags(*) { return flags; * } -> modify
+dynamic_binary.mk | my_strip_args := --keep-symbols -> add
+linker.go         | linker.sanitize.isSanitizerEnabled(*) -> annotate
