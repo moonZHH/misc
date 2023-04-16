@@ -1,4 +1,21 @@
-Kernel 4.4
+Tips
 
+## Kernel 4.4
+1. 修改wllvm compilers.py, objcopy -> llvm-objcopy
+2. 修改wllvm compilers.py, LLVM_COMPILER_PATH
+3. (Optional?) LTO=none
+4. 修改wahoo_defconfig, disable CONFIG_COMPAT_VDSO
+5. build.sh编译内核时, ARCH=arm64, CC=wllvm, CLANG_TRIPLE=aarch64-linux-gnu-, CROSS_COMPILE=aarch64-linux-android-
 
-Kernel 4.9
+## Kernel 4.9
+1. 修改wllvm compilers.py, objcopy -> llvm-objcopy
+2. 修改wllvm compilers.py, LLVM_COMPILER_PATH
+3. (Optional?) LTO=none
+4. build.sh编译内核时, CC=wllvm
+5. 刷写kernel
+   1) cat /proc/versions查看内核分支, git check切换内核分支 (可以在4之前执行)
+   2) 拷贝out/版本/dist下所有文件到AOSP kernel/device/google/设备-kernel目录 (记得备份原目录内容)
+   3) 重新编译AOSP, 刷写image
+   4) adb push out/版本/dist下所有.ko文件到设备的vendor/lib/modules
+      步骤： adb root, adb disable-verity, adb reboot, adb shell mount -o rw,remount /vendor, adb push到vendor/lib/modules, adb shell mount -o ro,remount /vendor
+   5) adb reboot, 应该触摸屏和wlan可用
